@@ -17,7 +17,10 @@ System zdalnego wykonywanie kodu na klastrach obliczeniowych.
 
 ## Oprogramowanie <a name = "software"></a>
 
-Baza danych SQLite 3
+- SQLite 3
+- Linux kernel
+- Arch Linux
+- KDE
 
 
 ## Moduły <a name = "modules"></a>
