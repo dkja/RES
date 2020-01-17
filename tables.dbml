@@ -1,11 +1,8 @@
-
-
 table users {
     id              integer [pk, unique]
     username        varchar [unique, not null]
     password_hash   varchar [not null]
 }
-
 
 // i386
 // amd64
@@ -21,9 +18,6 @@ table archs {
     name        varchar [unique, not null]
 }
 
-
-
-
 table apps {
     id      integer [pk, unique]
     name    varchar [unique, not null]
@@ -35,7 +29,6 @@ table jobs {
     user_id     integer [not null, ref: > users.id]
     context_id  integer [ref: > contexts.id]
 }
-
 
 // osx
 // linux

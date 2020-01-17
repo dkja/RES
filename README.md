@@ -8,6 +8,7 @@
 - [DBML](#dbml)
 - [SQL Create](#sql_create)
 - [SQL Init](#sql_init)
+- [Examples](#examples)
 
 ## About <a name = "about"></a>
 
@@ -43,7 +44,7 @@ Diagram tabel z relacjami
 
 ![Diagram relacji](diagram.png "Diagram relacji")
 
-
+----
 
 ## DBML <a name = "dbml"></a>
 
@@ -77,3 +78,8 @@ INSERT INTO archs (id, name) VALUES (3, 'arm64');
 ```
 [more...](init.sql)
 
+-----
+
+## Examples <a name = "examples"></a>
+
+###
