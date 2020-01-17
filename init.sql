@@ -6,6 +6,7 @@ INSERT INTO archs (id, name) VALUES (5, 'mips');
 INSERT INTO archs (id, name) VALUES (6, 'mips64el');
 INSERT INTO archs (id, name) VALUES (7, 'mipsel');
 INSERT INTO archs (id, name) VALUES (8, 'ppc64el');
+INSERT INTO archs (id, name) VALUES (9, 'nvidia');
 
 INSERT INTO os_type (id, name) VALUES (1, 'linux');
 INSERT INTO os_type (id, name) VALUES (2, 'osx');

@@ -11,7 +11,8 @@ CREATE TABLE "archs" (
 
 CREATE TABLE "apps" (
   "id" integer UNIQUE PRIMARY KEY,
-  "name" varchar UNIQUE NOT NULL
+  "name" varchar UNIQUE NOT NULL,
+  "description" varchar
 );
 
 CREATE TABLE "jobs" (
@@ -42,7 +43,7 @@ CREATE TABLE "contexts" (
 
   CONSTRAINT "fk_os_type"
     FOREIGN KEY ("os_type")
-    REFERENCES "os_type"( "id"),
+    REFERENCES "os_type"( "id")
 );
 
 CREATE TABLE "devices_contexts" (
@@ -66,11 +67,11 @@ CREATE TABLE "devices" (
   "id" integer UNIQUE PRIMARY KEY,
   "type" integer NOT NULL,
   "name" varchar UNIQUE NOT NULL,
-  "data" varchar
+  "data" varchar,
 
   CONSTRAINT "fk_device_type"
     FOREIGN KEY ("type")
-    REFERENCES "device_type"( "id"),
+    REFERENCES "device_type"( "id")
 );
 
 CREATE TABLE "workers" (

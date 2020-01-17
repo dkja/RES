@@ -19,8 +19,9 @@ table archs {
 }
 
 table apps {
-    id      integer [pk, unique]
-    name    varchar [unique, not null]
+    id          integer [pk, unique]
+    name        varchar [unique, not null]
+    description varchar
 }
 
 table jobs {
