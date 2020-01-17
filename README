@@ -1,1 +1,16 @@
 # Remote Execution System
+
+
+System zdalnego wykonywanie kodu na klastrach obliczeniowych.
+
+* obsluga uzytkownikow [users]
+* zadania   [jobs]
+* aplikacje [apps]
+* rozno-architekturowe multiprocesory [workers, archs]
+* systemy operacyjne [os_type]
+* dynamiczne konteksty zadan [context]
+* urzadzenia [devieces. device_contexts]
+
+
+Baza danych SQLite 3
+
