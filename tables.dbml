@@ -1,0 +1,81 @@
+
+
+table users {
+    id              integer [pk, unique]
+    username        varchar [unique, not null]
+    password_hash   varchar [not null]
+}
+
+
+// i386
+// amd64
+// arm64
+// armel
+// mips
+// mips64el
+// mipsel
+// ppc64el
+// s390x
+table archs {
+    id          integer [pk, unique]
+    name        varchar [unique, not null]
+}
+
+
+
+
+table apps {
+    id      integer [pk, unique]
+    name    varchar [unique, not null]
+}
+
+table jobs {
+    id          integer [pk, unique]
+    app_id      integer [not null, ref: > apps.id]
+    user_id     integer [not null, ref: > users.id]
+    context_id  integer [ref: > contexts.id]
+}
+
+
+// osx
+// linux
+// windows
+// android
+table os_type {
+    id          integer [pk, unique]
+    name        varchar [unique, not null]
+}
+
+table contexts {
+    id                  integer [pk, unique]
+    os_type             integer [not null, ref: > os_type.id]
+}
+
+table devices_contexts{
+    device_id   integer [ref: > devices.id]
+    context_id  integer [ref: > contexts.id]
+}
+
+//cpus
+//memory
+//storage
+//Ethernet
+//GPU
+table device_type{
+    id          integer [pk, unique]
+    name        varchar [unique, not null]
+}
+
+table devices {
+    id      integer [pk, unique]
+    type    integer [not null, ref: > device_type.id]
+    name    varchar [not null, unique]
+    data    varchar 
+}
+
+table workers {
+    id                  integer [pk, unique]
+    name                varchar [not null]
+    arch_id             integer [ref: > archs.id]
+    current_job_id      integer [ref: > jobs.id]
+}
