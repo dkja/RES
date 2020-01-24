@@ -19,7 +19,7 @@ CREATE TABLE "jobs" (
   "id" integer UNIQUE PRIMARY KEY,
   "app_id" integer NOT NULL,
   "user_id" integer NOT NULL,
-  "context_id" integer,
+  "context_id" integer NOT NULL,
 
   CONSTRAINT "fk_apps"
     FOREIGN KEY ("app_id")
@@ -47,8 +47,8 @@ CREATE TABLE "contexts" (
 );
 
 CREATE TABLE "devices_contexts" (
-  "device_id" integer,
-  "context_id" integer,
+  "device_id" integer NOT NULL,
+  "context_id" integer NOT NULL,
 
   CONSTRAINT "fk_devices"
     FOREIGN KEY ("device_id")
@@ -76,10 +76,14 @@ CREATE TABLE "devices" (
 
 CREATE TABLE "workers" (
   "id" integer UNIQUE PRIMARY KEY,
+  "device_id" integer NOT NULL,
   "name" varchar NOT NULL,
-  "arch_id" integer,
+  "arch_id" integer NOT NULL,
   "current_job_id" integer,
 
+  CONSTRAINT "fk_devices"
+    FOREIGN KEY ("device_id")
+    REFERENCES "devices" ("id"),
   CONSTRAINT "fk_archs"
     FOREIGN KEY ("arch_id")
     REFERENCES "archs" ("id"),
@@ -87,6 +91,36 @@ CREATE TABLE "workers" (
     FOREIGN KEY ("current_job_id")
     REFERENCES "jobs" ("id")
 );
+
+
+
+
+INSERT INTO archs (id, name) VALUES (1, 'i386');
+INSERT INTO archs (id, name) VALUES (2, 'x64');
+INSERT INTO archs (id, name) VALUES (3, 'arm64');
+INSERT INTO archs (id, name) VALUES (4, 'armel');
+INSERT INTO archs (id, name) VALUES (5, 'mips');
+INSERT INTO archs (id, name) VALUES (6, 'mips64el');
+INSERT INTO archs (id, name) VALUES (7, 'mipsel');
+INSERT INTO archs (id, name) VALUES (8, 'ppc64el');
+INSERT INTO archs (id, name) VALUES (9, 'nvidia');
+
+INSERT INTO os_type (id, name) VALUES (1, 'linux');
+INSERT INTO os_type (id, name) VALUES (2, 'osx');
+INSERT INTO os_type (id, name) VALUES (3, 'windows');
+INSERT INTO os_type (id, name) VALUES (4, 'android');
+
+
+INSERT INTO device_type (id, name) VALUES (0, 'unknown');
+INSERT INTO device_type (id, name) VALUES (1, 'CPU');
+INSERT INTO device_type (id, name) VALUES (2, 'memory');
+INSERT INTO device_type (id, name) VALUES (3, 'storage');
+INSERT INTO device_type (id, name) VALUES (4, 'Ethernet');
+INSERT INTO device_type (id, name) VALUES (5, 'GPU');
+
+
+
+
 
 -- ALTER TABLE "jobs" ADD FOREIGN KEY ("app_id") REFERENCES "apps" ("id");
 -- ALTER TABLE "jobs" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");

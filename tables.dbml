@@ -28,7 +28,7 @@ table jobs {
     id          integer [pk, unique]
     app_id      integer [not null, ref: > apps.id]
     user_id     integer [not null, ref: > users.id]
-    context_id  integer [ref: > contexts.id]
+    context_id  integer [ref: > contexts.id, not null]
 }
 
 // osx
@@ -46,8 +46,8 @@ table contexts {
 }
 
 table devices_contexts{
-    device_id   integer [ref: > devices.id]
-    context_id  integer [ref: > contexts.id]
+    device_id   integer [ref: > devices.id, not null]
+    context_id  integer [ref: > contexts.id, not null]
 }
 
 //cpus
@@ -69,7 +69,8 @@ table devices {
 
 table workers {
     id                  integer [pk, unique]
+    device_id           integer [not null, ref: > devices.id]
     name                varchar [not null]
-    arch_id             integer [ref: > archs.id]
+    arch_id             integer [ref: > archs.id, not null]
     current_job_id      integer [ref: > jobs.id]
 }
