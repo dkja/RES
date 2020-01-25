@@ -12,5 +12,5 @@ Executing
     Make jobs
     Create context
     Bind devices to contexts
-    Run job on context
+    Run job on context by free workers
 

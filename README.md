@@ -251,6 +251,12 @@ INSERT INTO devices_contexts VALUES ( (SELECT id from workers where current_job_
 
 ```
 
+
+### Show users
+```
+select * from users;
+```
+
 ### Show jobs
 ```
 select contexts.id, jobs.id, username, apps.name, apps.description
@@ -269,3 +275,4 @@ left join devices on devices.id = device_id
 left join device_type on devices.type = device_type.id
 where contexts.id = 1;
 ```
+

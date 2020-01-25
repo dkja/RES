@@ -145,7 +145,16 @@ INSERT INTO devices_contexts VALUES ( (SELECT id from workers where current_job_
 
 
 
+-- Show users 
 
+select * from users;
+
+
+-- Change password
+
+update users
+set password_hash = '3388f075670b48d13f5bffdace5c88694676e006dc90467376b911362b82b093'
+where id = 2;
 
 
 -- Show jobs data:
@@ -165,3 +174,5 @@ INSERT INTO devices_contexts VALUES ( (SELECT id from workers where current_job_
     left join devices on devices.id = device_id
     left join device_type on devices.type = device_type.id
     where contexts.id = 1;
+
+
